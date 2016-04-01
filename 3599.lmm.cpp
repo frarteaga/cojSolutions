@@ -22,11 +22,11 @@ int main()
     {
         int a, b, aa, bb;
         cin >> a >> b;
+		aa = a;
+		bb = b;
 
 		if (!calc[a][b]){
 			int sum = cad[a] + cad[b];
-			aa = a;
-			bb = b;
 			a++, b--;
 			bool flag = true;
 			while(a <= b)
