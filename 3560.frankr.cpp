@@ -38,7 +38,7 @@ void back(int h, ULL H1, ULL H2){
 
 	primos.push_back(h);
 
-	sqfp.insert(pair<ULL, ULL>(H1, H2));
+	sqfp.insert(pair<ULL, ULL>(H1, H2)); //doble hash
 
 	for (int i = h + 1 ; i <= N ; i++)
 		back(i, H1 * (A[i] % MOD2) % MOD2, H2 * (A[i] % MOD) % MOD);
@@ -53,9 +53,10 @@ int main(){
 	for (int i = 0 ; i <= N ; i++)
 		cin >> A[i];
 
+	//precalculando los primos relativos
 	for (int i = 0 ; i <= N ; i++){
 		for (int j = i ; j <= N ; j++){
-			MCD1[i][j] = MCD1[j][i] = (__gcd(A[i], A[j]) == 1);
+			MCD1[i][j] = MCD1[j][i] = (__gcd(A[i], A[j]) == 1); 
 		}
 	}
 	
