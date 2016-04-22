@@ -1,0 +1,22 @@
+Yo he estado trabajando en el problema 2 C
+La idea es la siguiente
+La solucion parcial seria mirar cada arbol como un rectangulo
+ con centro en ese arbol  y con longitud (2*L +1) y ancho (2*W + 1) , 
+hallar el area de la union de rectangulos  usando range tree para cada 
+fumigacion o simplemente un sweep line para saber si cubre el espacio 
+completo, en caso positivo entonces esa fumigacion es la respuesta final, 
+esta solucion es O(N^2 log N) y no resuelve el problema en su totalidad, 
+esto creo que podria coger al menos la mitad de los puntos.
+Lo otro seria una busqueda binaria para el instante de 
+tiempo(es decir la funigacion) y luego hacer lo que anteriormente comentaba, 
+esto puede que de en tiempo pues es O(N log^2 N) y da solucion total al problema
+ 
+La forma clasica sweep line de conocer el area de la union de rectangulos 
+tiene complejidad temporal N^2 log N y no cabe en tiempo, pero si se usa un 
+range tree entonces se convierte en N log N lo que si daria en tiempo, 
+hay que tener en cuenta tambien que las coordenadas hay que normalizarlas, 
+es decir llevarlas a una escala menor en el tamaño entre 1 y 2*N en vez de 
+trabajar con 10^9.
+ 
+Estaba buscando el código de el área de interseccion de rectangulos 
+con range tree que tenia por alli pero no lo encontre.

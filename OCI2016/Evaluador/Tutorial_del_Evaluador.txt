@@ -1,0 +1,147 @@
+Para evaluar un código usted puede crear y usar los clásicos r.bat o usar 
+una versión en Python del batman.bat creado por Lara en 2012.
+
+Primero veamos la estructura de esta carpeta:
+
+CNC2016
+|   Grader.exe
+|   lineas.txt
+|   python-2.5.2.msi
+|   rc.py
+|   Tutorial_del_Evaluador.txt
+|   
++---Checkers
+|       1A.checker.cpp
+|       1C.checker.cpp
+|       fc.py
+|       
++---Concursantes
+|   +---dcordb
+|   |   \---DIA1
+|   |       \---dcordb0
+|   |               dcordb0-1B.cpp
+|   |               
+|   +---fb
+|   |   \---DIA2
+|   |       \---fb0
+|   |               fb0-2A.cpp
+|   |               
+|   +---frankr
+|   |   +---DIA1
+|   |   |   \---frankr0
+|   |   \---DIA2
+|   |       \---frankr0
+|   |               frankr0-2a.cpp
+|   |               
+|   \---Oficial
+|       +---DIA1
+|       |   \---Oficial0
+|       |           oficial0-1A.cpp
+|       |           oficial0-1C.cpp
+|       |           
+|       \---DIA2
+|           \---oficial0
+|                   oficial0-2A.cpp
+|                   oficial0-2B.cpp
+|                   oficial0-2C.cpp
+|                   
+\---Tests_
+    +---cuentas
+    |       cuentas.0.in
+    |       cuentas.0.out
+    |       cuentas.1.in
+    |       cuentas.1.out
+    |       ...
+    +---fumigacion
+    |       fumigacion.0.in
+    |       fumigacion.0.out
+    |       ...
+    |       
+    +---hexagono
+    |       hexagono.0.in
+    |       hexagono.0.out
+    |       ...
+	|
+    +---robot
+    |       robot.0.in
+    |       robot.0.out
+    |       ...
+    |       
+    +---rutas
+    |       rutas.0.in
+    |       rutas.0.out
+    |       ...
+    |       
+    \---tablas
+            tablas.0.in
+            tablas.0.out
+            ...
+            
+Pasos necesarios:
+  
+   1. Instalar Python mediante el archivo python-2.5.2.msi (también puede
+      instalar otras versiones superiores como 2.6 y 2.7).
+   2. Una vez instalado Python de doble click en rc.py y si se ejecuta
+      una consola como un ejecutable normal es que se configuró 
+      correctamente la variable PATH; sino debe usted hacer esto
+      manualmente en la configuración de Mi PC (Variables de entorno).
+   3. Compile los checkers para producir los ejecutables:
+		+---Checkers
+		|       1A.checker.cpp
+		|       1C.checker.cpp
+   4. Abra el cmd de windows y ubíquese en el directorio raíz de esta 
+      carpeta.
+   5. Si su provincia es PP y su código de concursante es C entonces las 
+      líneas que debe ejecutar son:
+
+		rc.py 1A 1000 16777216 Checkers\1A.checker.exe 0 PP C
+
+		rc.py 1B 4000 268435456 Checkers\fc.py 0 PP C
+
+		rc.py 1C 2000 134217728 Checkers\1C.checker.exe 0 PP C
+
+		rc.py 2A 2000 16777216 Checkers\fc.py 0 PP C
+
+		rc.py 2B 5000 268435456  Checkers\fc.py 0 PP C
+
+		rc.py 2C 2000 16777216 Checkers\fc.py 0 PP C
+
+Muy importante los casos de prueba deben estar numerados desde 0, ejemplo:
+
+ tablas.0.in
+ tablas.0.out
+ tablas.1.in
+ tablas.1.in
+ tablas.2.in
+ ...
+ 
+El script ajustar_in_out.py sirve para poner los casos de prueba
+en este formato requerido por r.py y rc.py.
+
+No es necesario compilar puesto que el rc.py ya se encarga de compilar.
+El único paso necesario es poner en la variable PATH del sistema la 
+ubicación de g++.exe, que normalmente es:
+
+C:\\"Program Files"\\CodeBlocks\\MinGW\\bin\\g++.exe
+
+Para modificar valores de la variable PATH vea los
+pasos en el archivo SetearVarPATH.doc
+
+Explicación de los argumentos que recibe el rc.py:
+
+      1. Código del problema.
+      2. Tiempo Límite en mili segundos.
+      3. Memoria Límite en bytes. (1Mb = 1024 * 1024 bytes)
+      4. Checker personalizado o fc.py (fc.py hace lo mismo que el FC de
+         windows pero no da error por si en la última línea imprimes \n
+         o no).
+      5. Bandera para correr caso por caso (1) o todos sin pausa (0).
+      6. Código de provincia.
+      7. Código de concursante.
+
+El archivo Grader.exe es el encargado de medir el tiempo y la memoria.
+Fue creado por Jose Ernesto Lara en C++ usando el API de Windows 
+y el código se encuentra en la carpeta del nacional de 2012.
+
+rc.py y fc.py son scripts en Python que puede modificar libremente 
+si lo desea.
