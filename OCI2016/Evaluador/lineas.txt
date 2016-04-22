@@ -1,0 +1,38 @@
+PORV: PR, LH, ..
+CODE: 1, 2, 3, .., 10  0 en caso de ser sol oficial y/o de entrenador
+Para probar las soluciones oficiales y/o de entrenador:
+	PROV = oficial/frankr/dcordb/fb
+	CODE = 0
+VERBOSE = 0 sin parar
+          1 caso a caso
+
+rc.py 1A [TIEMPOms] 16777216 Checkers\1A.checker.exe [VERBOSE] [PROV] [CODE]
+
+rc.py 1B [TIEMPOms] 268435456 Checkers\fc.py [VERBOSE] [PROV] [CODE]
+
+rc.py 1C [TIEMPOms] 134217728 Checkers\1C.checker.exe [VERBOSE] [PROV] [CODE]
+
+rc.py 2A [TIEMPOms] 16777216 Checkers\fc.py [VERBOSE] [PROV] [CODE]
+
+rc.py 2B [TIEMPOms] 268435456 Checkers\fc.py [VERBOSE] [PROV] [CODE]
+
+rc.py 2C [TIEMPOms] 16777216 Checkers\fc.py [VERBOSE] [PROV] [CODE]
+
+** Para correr las oficiales/entrenadores en la PC de referencia de
+un Intel Core i3-2310M a 2.1 GHz:
+
+rc.py 1A 1000 16777216 Checkers\1A.checker.exe 0 oficial 0
+
+rc.py 1B 4000 268435456 Checkers\fc.py 0 dcordb 0
+
+rc.py 1C 2000 134217728 Checkers\1C.checker.exe 0 oficial 0
+
+rc.py 2A 2000 16777216 Checkers\fc.py 0 frankr 0
+
+rc.py 2B 5000 268435456  Checkers\fc.py 0 oficial 0
+
+rc.py 2C 2000 16777216 Checkers\fc.py 0 oficial 0
+
+
+
+
