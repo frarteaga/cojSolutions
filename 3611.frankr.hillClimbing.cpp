@@ -133,16 +133,13 @@ LL hillClimbing(){
 }
 
 int main(){
-	srand(time(NULL));
+	srand(101);
 
 	cin >> N;
 	for (int i = 0 ; i < N ; i++)
 		cin >> A[i];
 	
-	int R = 130000; //con esta cantidad de repeticiones corre en menos de 8 segundos
-			//y en todas las corridas tuvo AC más del 60% de los casos,
-			//incluso llegó hasta el 90%!
-			//Si se sube hasta 800000 repeticiones dan AC todos pero se demora
+	int R = 10000; //Si se sube hasta 800000 repeticiones dan AC todos pero se demora
 			//~35 segundos
 	LL sol = 1LL << 62;
 	while (R--){
