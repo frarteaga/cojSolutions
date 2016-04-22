@@ -24,7 +24,7 @@ inline ULL h(int a, int b){
 }
 
 int main(){
-	//ios_base::sync_with_stdio(0); cin.tie(0); 
+	ios_base::sync_with_stdio(0); cin.tie(0); 
 	cin >> S;
 	N = S.size();
 	S = " " + S;
@@ -40,11 +40,13 @@ int main(){
 	for (i = 1 ; i <= N / 2 && !ok ; i++){
 		if (N % i == 0){
 			ok = true;
-			ULL h1 = h(1, i);
-			for (int j = 2 ; j <= N / i && ok ; j++){
-				if (h(j * i - i + 1, j * i) != h1)
-					ok = false;
-			}	
+			ULL h1 = hash[i];
+			if (hash[N] * (pot[i] - 1) != h1 * (pot[N] - 1))
+				ok = false;
+//			for (int j = 2 ; j <= N / i && ok ; j++){
+//				if (h(j * i - i + 1, j * i) != h1)
+//					ok = false;
+//			}	
 		}
 	}
 
