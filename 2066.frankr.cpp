@@ -1,6 +1,6 @@
 /*
 Prob: 2066 - Trisum
-Idea: Recurrencias Lineales .. Matrix Exponentation
+Idea: Recurrencias Lineales .. Matrix Exponentiation
 Ref: Charla de Artimetica de Fidel Schsposnik (VI CaribCamp)
 Ver problema: 1155 - Z-funkcija
 frankr@coj
