@@ -51,7 +51,7 @@ int main(){
 	}
 
 	if (ok)
-		cout << S.substr(1, i - 1) << '\n';
+		cout << i - 1 << '\n';
 	else
 		cout << 0 << '\n';
 
