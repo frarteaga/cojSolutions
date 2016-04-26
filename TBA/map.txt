@@ -1,0 +1,8 @@
+stii_tp.cpp
+stiii_invm.cpp
+stiv_pot.cpp
+stiv_pot.py
+
+generar JDs y comprobar contra la sol stiv_pot.py
+
+luego subir al coj y ajustar tiempos
