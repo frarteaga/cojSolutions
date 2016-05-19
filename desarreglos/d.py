@@ -25,6 +25,21 @@ def d(n):
 		return n - 1
 	return (n - 1) * (d(n - 1) + d(n - 2)) % 1000000007
 
+import math
+fact = math.factorial
+
+def fb(n):
+	r = 0
+	for i in xrange(n + 1):
+		sig = -1
+		if i % 2 == 0:
+			sig = 1;
+		r += sig * fact(n) / fact(i)
+	return r
+
+for i in xrange(1, 100):
+	assert fb(i) % 1000000007 == d(i)
+
 sol = 0
 n = input()
 for i in xrange(n + 1):
