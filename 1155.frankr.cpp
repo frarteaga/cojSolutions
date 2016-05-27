@@ -1,6 +1,6 @@
 /*
 Prob: 1155 - Z-funkcija
-Idea: Recurrencias Lineales .. Matrix Exponentation
+Idea: Recurrencias Lineales .. Matrix Exponentiation
 Ref: Charla de Artimetica de Fidel Schsposnik (VI CaribCamp)
 frankr@coj
 */
