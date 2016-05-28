@@ -1,0 +1,116 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[linkbordercolor={1 1 1},citebordercolor={1 1 1},urlbordercolor={1 1 1}]{hyperref}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Fibonacci All Pairs (COJ 2828)}
+\author{Frank Arteaga Salgado\\\texttt{\small farteaga@ipvce.lt.rimed.cu}}
+
+\begin{document}
+
+\maketitle
+
+\section{Problema}
+
+Vea este problema en el Juez Caribe\~no en L\'inea, \href{http://coj.uci.cu/24h/problem.xhtml?pid=2828}{2828 - Fibonacci All Pairs}.
+Pero antes de enfrentarse a este problema conviene resolver primero los problemas \href{http://coj.uci.cu/24h/problem.xhtml?pid=1596}{1596 - Fibonacci Numbers} 
+y \href{http://coj.uci.cu/24h/problem.xhtml?pid=1872}{1872 - Cousin Party}.
+
+\subsection{Enunciado}
+La Secuencia de Fibonacci se define recursivamente como:
+
+\begin{equation}
+%$$
+    \begin{array}{r@{ = }l}
+     F_1 & 1\\
+     F_2 & 2\\
+     F_n & F_{n - 1} + F_{n - 2} \qquad \qquad n > 2 \\
+    \end{array}
+    \label{fibdef}
+%$$
+\end{equation}
+
+Considere todos los pares ordenados de valores distintos de los $k$ primeros t\'erminos de la 
+Secuencia de Fibonacci, esto es, $(F_i, F_j)$ con $1 \le i < j \le k$. Se desea calcular
+la suma de los productos de cada uno de estos pares:
+
+%\begin{equation}
+$$
+ S(k) = \sum_{1 \le i < j \le k} F_i \times F_j
+$$
+%\end{equation}
+
+Ejemplo, para $k=4$ tenemos $F_1=1, F_2=2, F_3=3$ y $F_4=5$; los productos de los pares ordenados son 
+$F_1 \times F_2 = 2, F_1 \times F_3 = 3, F_1 \times F_4 = 5, F_2 \times F_3 = 6, F_2 \times F_4 = 10, F_3 \times F_4 = 15$ y su suma es 
+$2+3+5+6+10+15=41$.
+ 
+\section{Soluci\'on}
+
+Si implementamos dos ciclos anidados como sugiere el enunciado
+del problema entonces obtendr\'iamos una soluci\'on $\Theta(k^2)$, la cual
+es muy costosa por los rangos de $k$\footnote{$k \le 10^9$}.
+
+Notemos que si sumamos cada par dos veces y a\~nadi\'eramos $\sum_{i=1}^{k} F^2_i$ entonces nos quedar\'ia:
+
+\begin{equation}
+ 2S(k) + \sum_{i=1}^{k} F^2_i = \sum_{1 \le i, j \le k} F_i \times F_j = \left(\sum_{i=1}^k F_i\right)^2
+\end{equation}
+De donde se despeja $S(k)$:
+
+\begin{equation}
+ S(k) = \frac{ \left(\sum_{i=1}^k F_i\right)^2 - \sum_{i=1}^{k} F^2_i } {2}
+ \label{formula}
+\end{equation}
+Hasta aqu\'i la expresi\'on (\ref{formula}) nos permite una implementaci\'on con costo lineal $\Theta(k)$, pero todav\'ia no
+es suficiente para los rangos del problema. Por lo que es necesario encontrar expresiones para las dos sumatorias del
+numerador que tengan algoritmos m\'as eficientes que el lineal para computarlas.
+
+Esas expresiones son: 
+
+\begin{equation}
+ \sum_{i=1}^k F_i = F_{k + 2} - 2
+ \label{fibac}
+\end{equation}
+
+\begin{equation}
+ \sum_{i=1}^k F_i^2 = F_k \times F_{k + 1} - 1
+ \label{fib2ac}
+\end{equation}
+
+Las cuales el lector puede demostrar f\'acilmente por inducci\'on. Luego de esto sustituimos (\ref{fibac}) y (\ref{fib2ac})
+en (\ref{formula}):
+
+\begin{equation}
+ S(k) = \frac{ (F_{k + 2} - 2)^2 - F_k\times F_{k+1} + 1 }{2}
+\end{equation}
+
+Lo que redujo el c\'omputo de $S(k)$ al c\'alculo de tres n\'umeros de Fibonacci. Para calcular $F_n$ eficientemente
+en tiempo $O(log\; n)$ se usa multiplicaci\'on de matrices explotando el siguiente hecho\footnote{Igual que las identidades (\ref{fibac}) y (\ref{fib2ac})
+le recomendamos al lector demuestre (\ref{fibmat}) por inducci\'on.}
+
+\begin{equation}
+  \left( \begin{array}{r l}
+     1 & 1\\
+     1 & 0\\
+    \end{array}  \right)^n 
+    = 
+    \left( \begin{array}{r l}
+     F_{n + 1} & F_{n}\\
+     F_{n} & F_{n - 1}\\
+    \end{array}  \right)    
+    \label{fibmat}
+\end{equation}
+cuando $F_0 = 0$ y $F_1 = 1$, que son condiciones iniciales distintas a la definici\'on (\ref{fibdef}), sin embargo 
+emerge la misma secuencia de n\'umeros, pero desplazada como se muestra en la tabla:
+$$
+$$
+\qquad\qquad\qquad\qquad
+\begin{tabular}[h]{|c|c|c|c|c|c|c|c|}
+\hline
+ $F_0$ & $F_1$ & $F_2$ & $F_3$ & $F_4$ & $F_5$ & $F_6$ & $F_7$\\\hline
+ 1   & 1   & 2   & 3   & 5   & 8   & 13  & 21 \\\hline
+ 0   & 1   & 1   & 2   & 3   & 5   & 8   & 13 \\\hline
+\end{tabular}
+
+
+\end{document}
