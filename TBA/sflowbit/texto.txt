@@ -1,0 +1,12 @@
+Title: Superfactorial
+
+Muela OEIS las secuencias de P u de sf(N)
+
+IMAGEN OIES
+
+El superfactorial de N es el producto de todos los factoriales de los enteros en
+el intervalo [1, N]:
+
+     superfactorial(N) = 1! * 2! * ... * N!
+
+Calcule el mayor entero P tal 2^P divide a superfactorial(N) para N dado en [1..10^8]
